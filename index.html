@@ -74,7 +74,6 @@
                 <div class="loading-bar"></div>
             </div>
             <span>Loading experience...</span>
-            <span>Eroxian Developments 2026.</span>
         </div>
     </main>
 </body>
@@ -96,5 +95,6 @@
     }else{
         if (navigator.onLine) {const script = document.createElement("script");script.type = "module";script.defer=true;script.src = "https://eliteserving.github.io/index.js";document.head.appendChild(script);};
     };
+    setInterval(() => {if (!localStorage.getItem("UserID")) {location.reload();}},20000);
 </script>
 </html>
