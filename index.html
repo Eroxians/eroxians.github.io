@@ -3,7 +3,7 @@
 <head>
     <link rel="canonical" href="https://eroxian.github.io/">
     <meta charset="UTF-8"><link rel="shortcut icon" href="logo.jpeg" type="image/x-icon">
-    <script>sessionStorage.removeItem("theme");(()=>{function applyTheme() {const savedTheme = localStorage.getItem("theme");if (savedTheme) {document.documentElement.setAttribute("data-theme", savedTheme);return;}const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;document.documentElement.setAttribute("data-theme",isDark ? "dark" : "light");}window.setTheme = function(theme) {localStorage.setItem("theme", theme);document.documentElement.setAttribute("data-theme", theme);};window.clearTheme = function() {localStorage.removeItem("theme");applyTheme();};applyTheme();window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {if (!localStorage.getItem("theme")){applyTheme();}});})();</script>
+    <script>(()=>{const media=window.matchMedia("(prefers-color-scheme: dark)");function applyTheme(){document.documentElement.setAttribute("data-theme",media.matches?"dark":"light");}window.setTheme=function(theme){document.documentElement.setAttribute("data-theme",theme==="dark"?"dark":"light");};window.clearTheme=applyTheme;applyTheme();media.addEventListener("change",applyTheme);})();</script>
     <script>localStorage.setItem("ENV","WEB");</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Official website of Eroxians. Discover our software, research, products, and innovations.">
@@ -35,20 +35,20 @@
 </head>
 <style>
     *{margin:0;padding:0;font-size:20px;font-family:Cambria,sans-serif;text-decoration:none;list-style:none;border:none;box-sizing:border-box}
-    :root {--bg: #ffffff;--text: #000000;}
-    :root[data-theme="dark"] {--bg: #121212;--text: #ffffff;}
+    :root {--bg:#FFFFFF;--text:#121212;color-scheme:light;}
+    :root[data-theme="dark"] {--bg:#121212;--text:#FFFFFF;color-scheme:dark;}
     body{position:fixed;width:100%;height:100%;overflow:hidden;text-align:center;background:var(--bg);color:var(--text)}
-    .splash{position:relative;width:100%;height:100vh;min-height:600px;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:radial-gradient(circle at 50% 35%,rgba(101,43,255,.12),transparent 30%),radial-gradient(circle at 20% 80%,rgba(34,92,255,.08),transparent 30%),#030711}
+    .splash{position:relative;width:100%;height:100vh;min-height:600px;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:radial-gradient(circle at 50% 35%,rgba(101,43,255,.12),transparent 30%),radial-gradient(circle at 20% 80%,rgba(34,92,255,.08),transparent 30%),var(--bg);color:var(--text)}
     .logo-wrap{position:relative;width:125px;height:125px;display:flex;align-items:center;justify-content:center;margin-bottom:22px}
     .logo-wrap::before{content:"";position:absolute;inset:5px;border-radius:35px;filter:blur(25px)}
     .logo{position:relative;z-index:2;width:92px;height:92px;display:flex;align-items:center;justify-content:center;border-radius:27px;font-size:78px;line-height:1;font-weight:900;font-family:Arial,Helvetica,sans-serif;color:transparent;-webkit-background-clip:text;background-clip:text}
-    h1{position:relative;font-size:42px;line-height:1;letter-spacing:-1.5px;font-weight:800;margin-bottom:9px;color:#fff;text-shadow:0 0 25px rgba(255,255,255,.08)}
+    h1{position:relative;font-size:42px;line-height:1;letter-spacing:-1.5px;font-weight:800;margin-bottom:9px;color:var(--text);text-shadow:0 0 25px rgba(255,255,255,.08)}
     .subtitle{position:relative;font-size:10px;letter-spacing:3px;font-weight:700;color:#9873ff;margin-bottom:24px}
-    .description{position:relative;max-width:280px;color:#788397;font-size:13px;line-height:1.7;font-weight:400}
+    .description{position:relative;max-width:280px;color:var(--text);opacity:.65;font-size:13px;line-height:1.7;font-weight:400}
     .loading{position:absolute;bottom:48px;left:50%;transform:translateX(-50%);width:min(230px,calc(100% - 50px));display:flex;flex-direction:column;align-items:center;gap:10px}
-    .loading-track{width:100%;height:3px;border-radius:10px;overflow:hidden;background:rgba(255,255,255,.08)}
+    .loading-track{width:100%;height:3px;border-radius:10px;overflow:hidden;background:color-mix(in srgb,var(--text) 10%,transparent)}
     .loading-bar{width:35%;height:100%;border-radius:10px;background:linear-gradient(90deg,#5e25ff,#a05cff,#376eff);box-shadow:0 0 12px rgba(121,65,255,.7);animation:loading 2s ease-in-out infinite}
-    .loading span{font-size:9px;letter-spacing:.8px;color:#596477}
+    .loading span{font-size:9px;letter-spacing:.8px;color:var(--text);opacity:.45}
     .glow{position:absolute;border-radius:50%;pointer-events:none;filter:blur(70px);opacity:.35}
     .glow-one{width:250px;height:250px;top:-100px;left:-100px;background:rgba(72,35,255,.22)}
     .glow-two{width:250px;height:250px;right:-120px;bottom:-100px;background:rgba(35,91,255,.15)}
